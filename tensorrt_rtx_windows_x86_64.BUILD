@@ -10,10 +10,11 @@ cc_library(
 )
 
 cc_import(
-    name = "tensorrt_rtx_shared",
-    shared_library = "lib/libtensorrt_rtx.so",
+    name = "tensorrt_rtx_dll",
+    interface_library = "lib/tensorrt_rtx_1_1.lib",
+    shared_library = "lib/tensorrt_rtx_1_1.dll",
     visibility = ["//visibility:private"],
-    target_compatible_with = ["@platforms//os:linux"],
+    target_compatible_with = ["@platforms//os:windows"],
 )
 
 cc_library(
@@ -21,7 +22,7 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [
         "tensorrt_rtx_headers",
-        "tensorrt_rtx_shared",
+        "tensorrt_rtx_dll",
         "@rules_cuda//cuda:runtime",
     ],
 )
@@ -36,10 +37,11 @@ cc_library(
 )
 
 cc_import(
-    name = "tensorrt_onnxparser_rtx_shared",
-    shared_library = "lib/libtensorrt_onnxparser_rtx.so",
+    name = "tensorrt_onnxparser_rtx_dll",
+    interface_library = "lib/tensorrt_onnxparser_rtx_1_1.lib",
+    shared_library = "lib/tensorrt_onnxparser_rtx_1_1.dll",
     visibility = ["//visibility:private"],
-    target_compatible_with = ["@platforms//os:linux"],
+    target_compatible_with = ["@platforms//os:windows"],
 )
 
 cc_library(
@@ -47,12 +49,12 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [
         "tensorrt_onnxparser_rtx_headers",
-        "tensorrt_onnxparser_rtx_shared",
+        "tensorrt_onnxparser_rtx_dll",
     ],
 )
 
 alias(
     name = "tensorrt_rtx_bin",
-    actual = "//:bin/tensorrt_rtx",
+    actual = "//:bin/tensorrt_rtx.exe",
     visibility = ["//visibility:public"],
 )

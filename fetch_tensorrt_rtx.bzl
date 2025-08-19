@@ -9,7 +9,7 @@ def fetch_tensorrt_rtx():
         urls = [
             "https://developer.nvidia.com/downloads/trt/rtx_sdk/secure/1.1/TensorRT-RTX-1.1.1.26.Windows.win10.cuda-12.9.zip",
         ],
-        sha256 = "aee1ee36b320eb72d468f84c111adc0e57d79fee0d0bba7765cb035954b1a68d", 
+        sha256 = "aee1ee36b320eb72d468f84c111adc0e57d79fee0d0bba7765cb035954b1a68d",
         strip_prefix = "TensorRT-RTX-1.1.1.26",
         build_file = "@rules_tensorrt_rtx//:tensorrt_rtx_windows_x86_64.BUILD",
     )
