@@ -1,0 +1,20 @@
+cc_library(
+    name = "tensorrt_rtx",
+    visibility = ["//visibility:public"],
+    deps = [
+	"@tensorrt_rtx_linux_x86_64//:tensorrt_rtx",
+    ],
+)
+
+cc_library(
+    name = "tensorrt_onnxparser_rtx",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@tensorrt_rtx_linux_x86_64//:tensorrt_onnxparser_rtx",
+    ],
+)
+
+alias(
+    name = "tensorrt_rtx_bin",
+    actual = "@tensorrt_rtx_linux_x86_64//:tensorrt_rtx_bin",
+)
