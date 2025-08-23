@@ -19,7 +19,7 @@ cc_library(
 alias(
     name = "tensorrt_rtx_bin",
     actual = select({
-        "@platforms//os:linux": ["@tensorrt_rtx_linux_x86_64//:tensorrt_rtx_bin"],
-        "@platforms//os:windows": ["@tensorrt_rtx_windows_x86_64//:tensorrt_rtx_bin"],
+        "@platforms//os:linux": "@tensorrt_rtx_linux_x86_64//:tensorrt_rtx_bin",
+        "@platforms//os:windows": "@tensorrt_rtx_windows_x86_64//:tensorrt_rtx_bin",
     }),
 )
