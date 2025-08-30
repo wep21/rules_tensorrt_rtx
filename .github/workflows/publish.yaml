@@ -1,4 +1,3 @@
-
 # Publish new releases to Bazel Central Registry.
 name: Publish to BCR
 on:
@@ -34,4 +33,3 @@ jobs:
     secrets:
       # Necessary to push to the BCR fork, and to open a pull request against a registry
       publish_token: ${{ secrets.publish_token || secrets.BCR_PUBLISH_TOKEN }}
-

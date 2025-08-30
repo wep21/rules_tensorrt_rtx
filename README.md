@@ -1,4 +1,4 @@
-# rules_tensorrt_rtx 
+# rules_tensorrt_rtx
 
 ## Usage
 
