@@ -1,0 +1,13 @@
+{
+  "homepage": "https://github.com/wep21/rules_tensorrt_rtx",
+  "maintainers": [
+    {
+      "email": "daisuke.nishimatsu1021@gmail.com",
+      "github": "wep21",
+      "name": "Daisuke Nishimatsu"
+    }
+  ],
+  "repository": ["github:wep21/rules_tensorrt_rtx"],
+  "versions": [],
+  "yanked_versions": {}
+}
