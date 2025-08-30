@@ -1,3 +1,5 @@
+"""Module extension for rules_tensorrt_rtx to fetch and register TensorRT RTX dependencies."""
+
 load("@rules_tensorrt_rtx//:fetch_tensorrt_rtx.bzl", "fetch_tensorrt_rtx")
 
 def _tensorrt_rtx_impl(ctx):
