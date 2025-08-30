@@ -1,3 +1,5 @@
+"""Module for fetching remote or local TensorRT RTX libraries using Bazel http_archive."""
+
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 def fetch_tensorrt_rtx():
