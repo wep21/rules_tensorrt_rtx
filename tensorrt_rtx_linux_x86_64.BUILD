@@ -3,7 +3,7 @@ load("@rules_cc//cc:defs.bzl", "cc_import", "cc_library")
 cc_library(
     name = "tensorrt_rtx_headers",
     hdrs = glob([
-	"include/NvInfer*",
+        "include/NvInfer*",
     ]),
     includes = ["include"],
     visibility = ["//visibility:private"],
@@ -12,8 +12,8 @@ cc_library(
 cc_import(
     name = "tensorrt_rtx_shared",
     shared_library = "lib/libtensorrt_rtx.so",
-    visibility = ["//visibility:private"],
     target_compatible_with = ["@platforms//os:linux"],
+    visibility = ["//visibility:private"],
 )
 
 cc_library(
@@ -38,8 +38,8 @@ cc_library(
 cc_import(
     name = "tensorrt_onnxparser_rtx_shared",
     shared_library = "lib/libtensorrt_onnxparser_rtx.so",
-    visibility = ["//visibility:private"],
     target_compatible_with = ["@platforms//os:linux"],
+    visibility = ["//visibility:private"],
 )
 
 cc_library(
