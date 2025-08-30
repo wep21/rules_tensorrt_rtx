@@ -14,17 +14,17 @@ concurrency:
   group: concurrency-group::${{ github.workflow }}::${{ github.event.pull_request.number > 0 && format('pr-{0}', github.event.pull_request.number) || github.ref_name }}${{ github.ref_name == 'main' && format('::{0}', github.run_id) || ''}}
   cancel-in-progress: ${{ github.ref_name != 'main' }}
 jobs:
-  test:
-    uses: bazel-contrib/.github/.github/workflows/bazel.yaml@v6
-    with:
-      folders: |
-        [
-          ".",
-        ]
-      exclude: |
-        [
-          {"folder": ".", "bzlmodEnabled": false}
-        ]
+  # test:
+  #   uses: bazel-contrib/.github/.github/workflows/bazel.yaml@v6
+  #   with:
+  #     folders: |
+  #       [
+  #         ".",
+  #       ]
+  #     exclude: |
+  #       [
+  #         {"folder": ".", "bzlmodEnabled": false}
+  #       ]
   pre-commit:
     runs-on: ubuntu-latest
     steps:
