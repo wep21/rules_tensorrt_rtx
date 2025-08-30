@@ -16,3 +16,9 @@ use_repo(
     "tensorrt_rtx_linux_x86_64",
     "tensorrt_rtx_windows_x86_64",
 )
+
+bazel_dep(
+    name = "buildifier_prebuilt",
+    version = "8.2.0.2",
+    dev_dependency = True,
+)
