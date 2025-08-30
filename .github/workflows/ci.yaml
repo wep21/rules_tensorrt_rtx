@@ -25,6 +25,7 @@ jobs:
         [
           {"folder": ".", "bzlmodEnabled": false}
         ]
+      bazel_test_command: "bazel build //..."
   pre-commit:
     runs-on: ubuntu-latest
     steps:
