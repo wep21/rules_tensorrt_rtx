@@ -11,8 +11,8 @@ cc_library(
 
 cc_import(
     name = "tensorrt_rtx_dll",
-    interface_library = "lib/tensorrt_rtx_1_1.lib",
-    shared_library = "lib/tensorrt_rtx_1_1.dll",
+    interface_library = "lib/tensorrt_rtx_1_2.lib",
+    shared_library = "bin/tensorrt_rtx_1_2.dll",
     target_compatible_with = ["@platforms//os:windows"],
     visibility = ["//visibility:private"],
 )
@@ -38,8 +38,8 @@ cc_library(
 
 cc_import(
     name = "tensorrt_onnxparser_rtx_dll",
-    interface_library = "lib/tensorrt_onnxparser_rtx_1_1.lib",
-    shared_library = "lib/tensorrt_onnxparser_rtx_1_1.dll",
+    interface_library = "lib/tensorrt_onnxparser_rtx_1_2.lib",
+    shared_library = "bin/tensorrt_onnxparser_rtx_1_2.dll",
     target_compatible_with = ["@platforms//os:windows"],
     visibility = ["//visibility:private"],
 )
