@@ -1,0 +1,22 @@
+module(
+    name = "rules_tensorrt_rtx_examples",
+    version = "0.0.0",
+    compatibility_level = 1,
+)
+
+bazel_dep(name = "rules_tensorrt_rtx")
+local_path_override(
+    module_name = "rules_tensorrt_rtx",
+    path = "..",
+)
+
+tensorrt_rtx = use_extension("@rules_tensorrt_rtx//:extensions.bzl", "tensorrt_rtx")
+tensorrt_rtx.fetch(
+    cuda_version = "12.9",
+    version = "1.2.0.54",
+)
+use_repo(
+    tensorrt_rtx,
+    "tensorrt_rtx_linux_x86_64",
+    "tensorrt_rtx_windows_x86_64",
+)
