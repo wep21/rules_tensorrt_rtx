@@ -11,7 +11,7 @@ cc_library(
 
 cc_import(
     name = "tensorrt_rtx_shared",
-    shared_library = "lib/libtensorrt_rtx.so",
+    shared_library = "lib/libtensorrt_rtx.so.1",
     target_compatible_with = ["@platforms//os:linux"],
     visibility = ["//visibility:private"],
 )
@@ -37,7 +37,7 @@ cc_library(
 
 cc_import(
     name = "tensorrt_onnxparser_rtx_shared",
-    shared_library = "lib/libtensorrt_onnxparser_rtx.so",
+    shared_library = "lib/libtensorrt_onnxparser_rtx.so.1",
     target_compatible_with = ["@platforms//os:linux"],
     visibility = ["//visibility:private"],
 )
