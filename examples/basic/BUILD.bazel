@@ -1,0 +1,10 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+
+cc_binary(
+    name = "main",
+    srcs = ["main.cpp"],
+    deps = [
+        "@rules_tensorrt_rtx//:tensorrt_onnxparser_rtx",
+        "@rules_tensorrt_rtx//:tensorrt_rtx",
+    ],
+)
