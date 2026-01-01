@@ -3,14 +3,24 @@
 load("@rules_tensorrt_rtx//:fetch_tensorrt_rtx.bzl", "fetch_tensorrt_rtx")
 
 def _tensorrt_rtx_impl(ctx):
+    root_tags = []
+    rules_tags = []
     for mod in ctx.modules:
-        if mod.name != "rules_tensorrt_rtx":
-            continue
-        for tag in mod.tags.fetch:
-            fetch_tensorrt_rtx(
-                version = tag.version,
-                cuda_version = tag.cuda_version,
-            )
+        if mod.is_root:
+            root_tags.extend(mod.tags.fetch)
+        elif mod.name == "rules_tensorrt_rtx":
+            rules_tags.extend(mod.tags.fetch)
+
+    tags = root_tags if root_tags else rules_tags
+    if len(tags) > 1:
+        fail("Only one tensorrt_rtx.fetch tag is supported.")
+    if not tags:
+        return
+    tag = tags[0]
+    fetch_tensorrt_rtx(
+        version = tag.version,
+        cuda_version = tag.cuda_version,
+    )
 
 _fetch = tag_class(attrs = {
     "version": attr.string(default = "1.2.0.54"),
