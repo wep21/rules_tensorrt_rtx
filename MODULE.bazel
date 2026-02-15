@@ -1,6 +1,5 @@
 module(
     name = "rules_tensorrt_rtx",
-    version = "0.2.0",
     compatibility_level = 1,
 )
 
