@@ -7,7 +7,7 @@ module(
 bazel_dep(name = "bazel_skylib", version = "1.7.1")
 bazel_dep(name = "platforms", version = "0.0.11")
 bazel_dep(name = "rules_cc", version = "0.1.1")
-bazel_dep(name = "rules_cuda", version = "0.2.5")
+bazel_dep(name = "rules_cuda", version = "0.3.0-beta1")
 
 tensorrt_rtx = use_extension("@rules_tensorrt_rtx//:extensions.bzl", "tensorrt_rtx")
 tensorrt_rtx.fetch()
