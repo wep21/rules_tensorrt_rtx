@@ -1,5 +1,17 @@
 load("@rules_cc//cc:defs.bzl", "cc_import", "cc_library")
 
+filegroup(
+    name = "tensorrt_rtx_interface_library",
+    srcs = glob(["lib/tensorrt_rtx_*.lib"]),
+    visibility = ["//visibility:private"],
+)
+
+filegroup(
+    name = "tensorrt_rtx_shared_library",
+    srcs = glob(["bin/tensorrt_rtx_*.dll"]),
+    visibility = ["//visibility:private"],
+)
+
 cc_library(
     name = "tensorrt_rtx_headers",
     hdrs = glob([
@@ -11,8 +23,8 @@ cc_library(
 
 cc_import(
     name = "tensorrt_rtx_dll",
-    interface_library = "lib/tensorrt_rtx_1_2.lib",
-    shared_library = "bin/tensorrt_rtx_1_2.dll",
+    interface_library = ":tensorrt_rtx_interface_library",
+    shared_library = ":tensorrt_rtx_shared_library",
     target_compatible_with = ["@platforms//os:windows"],
     visibility = ["//visibility:private"],
 )
@@ -36,10 +48,22 @@ cc_library(
     visibility = ["//visibility:private"],
 )
 
+filegroup(
+    name = "tensorrt_onnxparser_rtx_interface_library",
+    srcs = glob(["lib/tensorrt_onnxparser_rtx_*.lib"]),
+    visibility = ["//visibility:private"],
+)
+
+filegroup(
+    name = "tensorrt_onnxparser_rtx_shared_library",
+    srcs = glob(["bin/tensorrt_onnxparser_rtx_*.dll"]),
+    visibility = ["//visibility:private"],
+)
+
 cc_import(
     name = "tensorrt_onnxparser_rtx_dll",
-    interface_library = "lib/tensorrt_onnxparser_rtx_1_2.lib",
-    shared_library = "bin/tensorrt_onnxparser_rtx_1_2.dll",
+    interface_library = ":tensorrt_onnxparser_rtx_interface_library",
+    shared_library = ":tensorrt_onnxparser_rtx_shared_library",
     target_compatible_with = ["@platforms//os:windows"],
     visibility = ["//visibility:private"],
 )
