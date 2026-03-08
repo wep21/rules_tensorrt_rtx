@@ -14,7 +14,6 @@ local_path_override(
 tensorrt_rtx = use_extension("@rules_tensorrt_rtx//:extensions.bzl", "tensorrt_rtx")
 tensorrt_rtx.fetch(
     cuda_version = "12.9",
-    version = "1.2.0.54",
 )
 use_repo(
     tensorrt_rtx,
