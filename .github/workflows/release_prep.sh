@@ -16,25 +16,11 @@ git archive --format=tar --prefix=${PREFIX}/ ${TAG} | gzip > $ARCHIVE
 SHA=$(shasum -a 256 $ARCHIVE | awk '{print $1}')
 
 cat << EOF
-## Using Bzlmod with Bazel 6 or greater
+## Bzlmod
 
-1. (Bazel 6 only) Enable with \`common --enable_bzlmod\` in \`.bazelrc\`.
-2. Add to your \`MODULE.bazel\` file:
+Add to your \`MODULE.bazel\` file:
 
 \`\`\`starlark
 bazel_dep(name = "rules_tensorrt_rtx", version = "${TAG:1}")
 \`\`\`
-
-## Using WORKSPACE
-
-Paste this snippet into your \`WORKSPACE.bazel\` file:
-
-\`\`\`starlark
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-http_archive(
-    name = "rules_tensorrt_rtx",
-    sha256 = "${SHA}",
-    strip_prefix = "${PREFIX}",
-    url = "https://github.com/wep21/rules_tensorrt_rtx/releases/download/${TAG}/${ARCHIVE}",
-)
 EOF
