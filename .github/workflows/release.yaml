@@ -20,10 +20,17 @@ permissions:
   contents: write
 jobs:
   release:
-    uses: bazel-contrib/.github/.github/workflows/release_ruleset.yaml@v7.3.0
+    # https://github.com/bazel-contrib/.github/blob/master/.github/workflows/release_ruleset.yaml
+    uses: bazel-contrib/.github/.github/workflows/release_ruleset.yaml@v7.7.0
     with:
       release_files: rules_tensorrt_rtx-*.tar.gz
       prerelease: false
+      # Open the release as a draft to support immutable GitHub releases.
+      # Attestations will be uploaded to the draft in publish.yaml.
+      # See:
+      #   https://docs.github.com/en/code-security/concepts/supply-chain-security/immutable-releases.
+      #   https://github.com/bazel-contrib/publish-to-bcr#immutable-releases
+      draft: true
       tag_name: ${{ inputs.tag_name || github.ref_name }}
       bazel_test_command: "bazel build //..."
   publish:
@@ -33,3 +40,11 @@ jobs:
       tag_name: ${{ inputs.tag_name || github.ref_name }}
     secrets:
       publish_token: ${{ secrets.publish_token || secrets.BCR_PUBLISH_TOKEN }}
+  finalize:
+    # Publish the draft release
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
+        with:
+          tag_name: ${{ inputs.tag_name || github.ref_name }}
