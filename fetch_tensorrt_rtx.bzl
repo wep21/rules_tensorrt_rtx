@@ -2,7 +2,7 @@
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-_DEFAULT_VERSION = "1.5.0.114"
+_DEFAULT_VERSION = "1.7.1.116"
 
 # (version, cuda) -> sha256
 _WINDOWS_SHA256 = {
@@ -14,6 +14,10 @@ _WINDOWS_SHA256 = {
     ("1.4.0.76", "13.2"): "0a050b10158bbe286c90b55b23dffbd3d5096c626b2ee45eccf51322795a3c29",
     ("1.5.0.114", "12.9"): "71482524e842e2826397b8ebef5a215737d3a4235f0a071522ab03709913fac3",
     ("1.5.0.114", "13.2"): "2990bf3ee42e3617e432f9afc3ae8b68d27da5103cfa5e6e8c05250e1609f1a0",
+    ("1.6.1.120", "12.9"): "a688478af9e7b824f4918ef3b3038c3aca6f1ea84ff30a52d7ba8196c65a5a5a",
+    ("1.6.1.120", "13.4"): "32612cd50842d2e4773071dfe8b947522d12a598ec8a01320ccbbda8272963e2",
+    ("1.7.1.116", "12.9"): "f43c6278b86acce5537f6c24341c97598e5dc6d76fc08a3786b9f423185ac69b",
+    ("1.7.1.116", "13.4"): "2002294a19f81135e4cfd074faddf1f842eb46979f36f7e6db57ff83016ba71d",
 }
 
 _LINUX_SHA256 = {
@@ -25,6 +29,10 @@ _LINUX_SHA256 = {
     ("1.4.0.76", "13.2"): "40de70b9b7583c9ebfc25d3399eb6986917ef0fefdde3fef67b75383a630db9c",
     ("1.5.0.114", "12.9"): "021fc649d877bf25be9d7bff72f19a326fd175d7fc5c9d6a944f88c225f8ccec",
     ("1.5.0.114", "13.2"): "2e040a7390e34ab7c57e66c4d01684d0c97f413a88562f705f210a3fd8118967",
+    ("1.6.1.120", "12.9"): "5506d864e261b2794e033c61302108f0b76703944a2c178986be3527763b5f50",
+    ("1.6.1.120", "13.4"): "fe6aadb544d9dd629c9655bbae985ad7a2d83c2747ff36846c74a6308d2946b6",
+    ("1.7.1.116", "12.9"): "ee422b2c804b370c08b1e7042b7719110f85f0dda3ebe29e9426a19df539964a",
+    ("1.7.1.116", "13.4"): "cb6414dc6116a288aa485b07b4f1ef1bc9f0a5d73b05627ebb96baac41c3260d",
 }
 
 _WIN10_OS_TAG_VERSIONS = ("1.2.0.54", "1.3.0.35")
@@ -68,7 +76,7 @@ def fetch_tensorrt_rtx(version = _DEFAULT_VERSION, cuda_version = "12.9"):
 
     Args:
         version: TensorRT RTX version string.
-        cuda_version: CUDA upper bound (e.g. "12.9", "13.2").
+        cuda_version: CUDA upper bound (e.g. "12.9", "13.4").
     """
     strip_prefix = "TensorRT-RTX-{}".format(version)
 

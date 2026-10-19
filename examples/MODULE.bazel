@@ -5,11 +5,26 @@ module(
 )
 
 bazel_dep(name = "rules_cc", version = "0.2.20")
+bazel_dep(name = "rules_cuda", version = "0.3.0")
 bazel_dep(name = "rules_tensorrt_rtx")
 local_path_override(
     module_name = "rules_tensorrt_rtx",
     path = "..",
 )
+
+# Use a hermetic CUDA toolkit from NVIDIA's redistributables instead of a local install.
+cuda = use_extension("@rules_cuda//cuda:extensions.bzl", "toolchain")
+cuda.redist_json(
+    name = "cuda_redist_json",
+    components = [
+        "cccl",
+        "cudart",
+        "nvcc",
+    ],
+    version = "12.9.1",
+)
+cuda.toolkit(name = "cuda")
+use_repo(cuda, "cuda")
 
 tensorrt_rtx = use_extension("@rules_tensorrt_rtx//:extensions.bzl", "tensorrt_rtx")
 tensorrt_rtx.fetch(
