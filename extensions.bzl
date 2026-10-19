@@ -23,7 +23,7 @@ def _tensorrt_rtx_impl(ctx):
     )
 
 _fetch = tag_class(attrs = {
-    "version": attr.string(default = "1.5.0.114"),
+    "version": attr.string(default = "1.6.1.120"),
     "cuda_version": attr.string(default = "12.9"),
 })
 
